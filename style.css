@@ -1,5 +1,37 @@
 :root {
-    --
+  /* Colores */
+    --color-1: #A4303F;
+    --color-2: #F2D0A4;
+    --color-text: #000000;
+  /* Text sizes */
+    --size-titulo-1:100rem;
+    --size-titulo-2: 8rem;
+    --size-titulo-3: 5rem;
+    --size-texto-normal: 1rem;
+  /* Text colors */
+    --color-titulo-1:var(--color-1);
+    --color-titulo-2:var(--color-2);
+    --color-titulo-3:var(--color-text);
+    --color-texto-normal:var(--color-text);
+/* HOME */
+
+}
+
+/* config textos */
+h1{
+  font-size: var(--size-titulo-1);
+}
+
+h2{
+  font-size: var(--size-titulo-2);
+}
+
+h3{
+  font-size: var(--size-titulo-3);
+}
+
+p{
+  font-size: var(--size-texto-normal);
 }
 
 .material-symbols-outlined {
@@ -9,3 +41,9 @@
   'GRAD' 0,
   'opsz' 24
 }
+
+/* HOME */
+
+/* página tipo DRAWER */
+
+/* página tipo CUADERNO */
