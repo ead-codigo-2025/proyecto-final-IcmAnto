@@ -1,5 +1,6 @@
+ver. 1
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,38 +25,38 @@
         <ul> 
             <li><a href="\pages\queHago" class="menu-f1">Qué hago</a></li>
                 <ul>
-                    <li><summary><a href="/pages/queHago/universidad/" class="menu-f2">Universidad</a></summary></li>
-                        <details><ul>
+                    <li><a href="/pages/queHago/universidad/" class="menu-f2">Universidad</a></li>
+                        <ul>
                             <li><a href="/pages/queHago/universidad/2023/" class="menu-f3">2023</a> </li>
                             <li><a href="/pages/queHago/universidad/2024/" class="menu-f3">2024</a> </li>
                             <li><a href="/pages/queHago/universidad/2025/" class="menu-f3">2025</a> </li>
-                        </ul></details>
+                        </ul>
                     <li><a href="/pages/queHago/otros/" class="menu-f2">Otros</a> </li>
                 </ul>
-            <li><summary><a href="Contacto" class="menu-f1">Contacto</a></summary> </li>
-                <summary><ul>
+            <li><a href="Contacto" class="menu-f1">Contacto</a> </li>
+                <ul>
                     <li><address>Correo <a href="mailto:icm.antonia@gmail.com"> </li>
                     <li><a href="https://wiki.ead.pucv.cl/Antonia_Campillay_Miranda" class="menu-f2">Perfil de Wiki Casiopea</a> </li>
                     <li><a href="https://www.instagram.com/hello_baeh" class="menu-f2">Cuenta de fotos</a> </li>
                     <li><a href="https://www.instagram.com/entretqnto?igsh=aWxwNjQxdnBrNTU2&fbclid=PAZXh0bgNhZW0CMTEAAacQpY1n49Q7ehOmNqaqsGR_D4u2srBI5hWfr1KN2U6qeEa2DwRxF2iavMRmVA_aem_bE4nGiVZZ-4Jiatm4q8dvQ" class="menu-f2">Cuenta de arte</a> </li>
-                </ul></summary>
+                </ul>
         </ul>
     </aside>
 
-    <main class="cuaderno"> <!-- grid-total -->
+    <main> <!-- cuadricula -->
         <section><!-- título -->
             <h1>Portafolio</h1>
-            <h4 id="home-sub">Antonia Campillay Miranda</h4>
+            <p>Antonia Campillay Miranda</p>
         </section>
 
-        <section id="extra"><!-- retrato-yo -->
-            <img src="/recursos/img/retrato/retrato-1-cuadrado.jpg" alt="fotografía de Antonia Campillay, cuadrada" class="retrato">
+        <section id="retrato-boton"><!-- retrato-yo -->
+            <img src="/recursos/img/retrato/retrato-1-cuadrado.jpg" alt="fotografía de Antonia Campillay, cuadrada">
         </section>
 
-        <section class="contenido"><!-- mueble-grid -->
+        <section id="mueble"><!-- mueble -->
             <h2>Trabajos</h2>
             <article class="drawer"><!-- Qué hago-universidad -->
-                <a class="" href="/pages/queHago/universidad/">de la universidad</a>
+                <a href="/pages/queHago/universidad/">de la universidad</a>
             </article>
 
             <article class="drawer"><!-- Qué hago-dibujo -->
@@ -69,3 +70,53 @@
     </main>
 </body>
 </html>
+
+:root {
+  /* Colores */
+    --color-1: #A4303F;
+    --color-2: #F2D0A4;
+    --color-text: #000000;
+  /* Text sizes */
+    --size-titulo-1:100rem;
+    --size-titulo-2: 8rem;
+    --size-titulo-3: 5rem;
+    --size-texto-normal: 1rem;
+  /* Text colors */
+    --color-titulo-1:var(--color-1);
+    --color-titulo-2:var(--color-2);
+    --color-titulo-3:var(--color-text);
+    --color-texto-normal:var(--color-text);
+/* HOME */
+
+}
+
+/* config textos */
+h1{
+  font-size: var(--size-titulo-1);
+}
+
+h2{
+  font-size: var(--size-titulo-2);
+}
+
+h3{
+  font-size: var(--size-titulo-3);
+}
+
+p{
+  font-size: var(--size-texto-normal);
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+/* HOME */
+
+/* página tipo DRAWER */
+
+/* página tipo CUADERNO */

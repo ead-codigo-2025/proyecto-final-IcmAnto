@@ -1,25 +1,35 @@
 :root {
+  /* GENERAL */
   /* Colores */
     --color-1: #A4303F;
     --color-2: #F2D0A4;
     --color-text: #000000;
+  /*  */
+    
+
+/* TEXTO */
   /* Text sizes */
     --size-titulo-1:100rem;
     --size-titulo-2: 8rem;
     --size-titulo-3: 5rem;
     --size-texto-normal: 1rem;
+    --size-subtitulo: 30rem;
   /* Text colors */
     --color-titulo-1:var(--color-1);
     --color-titulo-2:var(--color-2);
     --color-titulo-3:var(--color-text);
     --color-texto-normal:var(--color-text);
-/* HOME */
-
+    --color-subtitulo: var(--color-1);
+/* TEXTO */
+  /* Text sizes */
+  -- - ;
 }
 
 /* config textos */
 h1{
-  font-size: var(--size-titulo-1);
+  font-size: --size-titulo-1;
+  color: --color-subtitulo;
+
 }
 
 h2{
@@ -30,10 +40,16 @@ h3{
   font-size: var(--size-titulo-3);
 }
 
+.sub{ /* class */
+  font-size: var(--size-subtitulo);
+  color: 
+}
+
 p{
   font-size: var(--size-texto-normal);
 }
 
+/* elementos */
 .material-symbols-outlined {
   font-variation-settings:
   'FILL' 0,
@@ -44,6 +60,5 @@ p{
 
 /* HOME */
 
-/* página tipo DRAWER */
 
 /* página tipo CUADERNO */
