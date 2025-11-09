@@ -1,52 +1,257 @@
-:root {
-  /* GENERAL */
-  /* Colores */
+:root{
+/* COLORES */
+  /* General */
     --color-1: #A4303F;
     --color-2: #F2D0A4;
     --color-text: #000000;
-  /*  */
-    
 
+  /* Aspecto cuaderno */
+    --color-bg: #ffffff;         /* fondo principal */
+    --color-text: #111111;       /* texto principal */
+    --color-muted: #6b6b6b;      /* texto secundario */
+    --accent: #C00101;           /* ejemplo, reemplaza */
+    --panel-bg: rgba(255,255,255,0.9);
+    --overlay: rgba(0,0,0,0.45);
+      /* Cuaderno (intensidad 2) ajustes */
+    --cuaderno-line-color: rgba(0,0,0,0.2); /* líneas horizontales (suaves) */
+    --cuaderno-margin-line: rgba(0,0,0,0.12); /* línea vertical margen */
+    --cuaderno-line-height: 1.5rem; /* separación entre renglones visuales */
+  
 /* TEXTO */
   /* Text sizes */
-    --size-titulo-1:100rem;
+    --size-titulo-1-min: 2rem;
+    --size-titulo-1-max: 6rem;
     --size-titulo-2: 8rem;
     --size-titulo-3: 5rem;
     --size-texto-normal: 1rem;
     --size-subtitulo: 30rem;
+    --size-af1-cel: 1rem;/* celular */
+    --size-af1-comp: 1rem;/* computador */
+    --size-af2-cel: 0.8rem;
+    --size-af2-comp: 0.8rem;
+    --size-af3-cel: 0.5rem;
+    --size-af3-comp: 0.5rem;
+
   /* Text colors */
     --color-titulo-1:var(--color-1);
     --color-titulo-2:var(--color-2);
     --color-titulo-3:var(--color-text);
     --color-texto-normal:var(--color-text);
     --color-subtitulo: var(--color-1);
-/* TEXTO */
-  /* Text sizes */
-  -- - ;
+
+  /* Tipografías */
+    --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    --font-mono: "Courier New", monospace;
+
+/* ELEMENTOS */
+  /* img */
+    --height-img-min: 5rem;
+    --height-img-max: 5rem;
+
+  /* Sizing */
+  --max-width: 1100px;
+  --gap: 1rem;
+  --sidebar-width: 320px;
 }
 
-/* config textos */
-h1{
-  font-size: --size-titulo-1;
-  color: --color-subtitulo;
+/* ---------- RESET BÁSICO ---------- */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{
+  height:100%;
+  width:98%;
+  align-self: center;
+}
 
+body{
+  font-family: var(--font-sans);
+  background: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.4;
+}
+
+/* Layout general */
+header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0.75rem 1rem;
+  gap:0.5rem;
+  background: transparent;
+  position:relative;
+  z-index:10;
+}
+
+/* Migas de pan */
+#text-migaDePan{
+  font-size:0.95rem;
+  color:var(--color-muted);
+}
+#text-migaDePan a{
+  color:var(--color-muted);
+  text-decoration:none;
+  margin-right:0.25rem;
+  font-size:0.95rem;
+}
+
+/* ---------- BOTÓN MENU (siempre visible) ---------- */
+#menu{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:44px;
+  height:44px;
+  border-radius:8px;
+  border:1px solid rgba(0,0,0,0.06);
+  background:#ffffff;
+  cursor:pointer;
+}
+#menu .material-symbols-outlined{
+  font-size:20px;
+}
+
+/* ---------- SIDEBAR (deslizable desde la derecha) ---------- */
+.menu-aside{
+  position:fixed;
+  top:0;
+  right:0;
+  height:100%;
+  width:var(--sidebar-width);
+  max-width:90%;
+  transform: translateX(110%); /* oculto por defecto */
+  transition: transform 300ms ease;
+  background: var(--panel-bg);
+  box-shadow: -8px 0 24px rgba(0,0,0,0.08);
+  padding:1.25rem;
+  overflow:auto;
+  z-index:20;
+}
+
+/* Cuando abierto, JS añade .open (ver main.js) */
+.menu-aside.open{
+  transform: translateX(0);
+}
+
+/* Estructura del menú */
+.menu-aside ul{list-style:none}
+.menu-aside a{
+  display:inline-block;
+  color:var(--color-text);
+}
+.menu-aside .l1{margin-bottom:0.6rem}
+.menu-aside .l2{margin-left:0.6rem;margin-bottom:0.4rem}
+.menu-aside .l3{margin-left:1.2rem;margin-bottom:0.3rem}
+
+/* Overlay cuando el menú está abierto (se añade vía JS) */
+.menu-overlay{
+  position:fixed;
+  inset:0;
+  background: var(--overlay);
+  opacity:0;
+  visibility:hidden;
+  transition: opacity 220ms ease, visibility 220ms;
+  z-index:15;
+}
+.menu-overlay.show{
+  opacity:1;
+  visibility:visible;
+}
+
+/* ---------- MAIN - CUADERNO ---------- */
+.cuaderno{
+  max-width:var(--max-width);
+  margin:1.25rem auto;
+  padding:1.25rem 1.5rem;
+  position:relative;
+  background:transparent;
+  min-height:60vh;
+}
+
+.cuaderno{
+  /* background para líneas horizontales */
+  background-image:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent calc(var(--cuaderno-line-height) - 1px),
+      var(--cuaderno-line-color) calc(var(--cuaderno-line-height) - 1px),
+      var(--cuaderno-line-color) calc(var(--cuaderno-line-height))
+    );
+  background-size: 100% auto;
+  background-repeat: repeat;
+}
+
+/* Línea vertical tipo margen (pseudo-elemento) */
+.cuaderno::before{
+  content:"";
+  position:absolute;
+  left:1.1rem; /* distancia desde el borde del cuaderno */
+  top:0.8rem;
+  bottom:0.8rem;
+  width:3px; /* grosor de la línea de margen */
+  background: linear-gradient(180deg, var(--cuaderno-margin-line), rgba(0,0,0,0.04));
+  border-radius:2px;
+  opacity:0.95;
+  pointer-events:none;
+}
+
+/* Contenido dentro del cuaderno: hacer que los textos respeten margen izquierdo para no tapar la línea */
+.cuaderno > * {
+  position:relative;
+  padding-left:2.4rem; /* espacio para la línea vertical */
+  background-clip:padding-box;
+}
+
+/* Títulos en el cuaderno */
+.cuaderno h1, .cuaderno h2, .cuaderno h3 {
+  margin-bottom:0.5rem;
+}
+
+/* Imagenes y artículos dentro de cuaderno */
+.puntos{
+  border: 1px dashed rgba(0,0,0,0.04);
+  padding:0.6rem;
+  margin-bottom:0.8rem;
+  background: rgba(255,255,255,0.6);
+}
+.puntos img{
+  display:block;
+  width:100%;
+  height: var(--height-img-min);
+  object-fit:cover;
+}
+
+#extra img{
+  display:block;
+  width:auto;
+  height: var(--height-img-min);
+}
+
+/* TEXTOS */
+h1{
+  font-size: var(--size-titulo-1-min);
+  color: var(--color-titulo-1);
 }
 
 h2{
-  font-size: var(--size-titulo-2);
+  font-size: var(--color-titulo-2);
+  color: var(--size-titulo-2-min);
 }
 
 h3{
-  font-size: var(--size-titulo-3);
+  font-size: var(--color-titulo-3);
+  color: var(--size-titulo-3-min);
 }
 
 .sub{ /* class */
-  font-size: var(--size-subtitulo);
-  color: 
+  font-size: var(--size-subtitulo-min);
+  color: var(--color-subtitulo);
 }
 
 p{
-  font-size: var(--size-texto-normal);
+  font-size: var(--size-texto-normal-min);
+  color:var(--color-texto-normal);
 }
 
 /* elementos */
@@ -57,6 +262,104 @@ p{
   'GRAD' 0,
   'opsz' 24
 }
+
+/* GRID para dibujos (ejemplo listo para ajustar) */
+.grid-dibujos{
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap:1rem;
+}
+
+/* Drawer (links tipo caja) */
+.drawer{
+  border:1px solid rgba(0,0,0,0.06);
+  padding:0.9rem;
+  margin-bottom:0.6rem;
+}
+
+/* FOOTER simple (si lo agregas) */
+footer{
+  padding:1rem;
+  text-align:center;
+  color:var(--color-muted);
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-text);  
+  font-size: var(--size-a-cel);
+}
+a:hover {
+  opacity: 0.5; /* efecto suave, puedes cambiarlo */
+}
+
+/* ---------- RESPONSIVE / BEHAVIOR ---------- */
+@media(min-width:1100px){
+  body{  
+    display:grid;
+    grid-template-columns: 80% 20%;
+  }
+  
+  main{
+    display:grid;
+    grid-template-columns: 80% 20%;
+    grid-template-rows: ;
+  }
+
+  .cuaderno{
+    padding:2rem;
+  }
+  .menu-aside{
+    transform: translateX(0);
+    position:static;
+    width:300px;
+    box-shadow:none;
+  }
+
+  /* TEXTOS */
+    h1{
+      font-size: var(--size-titulo-1-max);
+      color: var(--color-titulo-1);
+    }
+
+    h2{
+      font-size: var(--size-titulo-2-max);
+      color: var(--color-titulo-2);
+    }
+
+    h3{
+      font-size: var(--size-titulo-3-max);
+      color: var(--color-titulo-2);
+    }
+
+    .sub{ /* class */
+      font-size: var(--size-subtitulo-max);
+      color: var(--color-subtitulo);
+    }
+
+    p{
+      font-size: var(--size-texto-normal-max);
+      color:var(--color-texto-normal);
+    }
+  
+    a {
+      text-decoration: none;
+      color: var(--color-text);  
+      font-size: var(--size-a-comp);
+    }
+
+    #extra img{
+      display:block;
+      height: var(--height-img-max);
+      width: auto;
+      object-fit:cover;
+    }
+}
+
+/* ---------- UTILIDADES (completa según gustes) ---------- */
+.u-hidden{display:none}
+.text-muted{color:var(--color-muted)}
+.center{text-align:center}
 
 /* HOME */
 
